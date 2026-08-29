@@ -1,0 +1,42 @@
+# Terraform working directories
+**/.terraform/*
+
+# Terraform state
+*.tfstate
+*.tfstate.*
+.terraform.tfstate.lock.info
+
+# Terraform plan files
+*.tfplan
+*.plan
+
+# Crash logs
+crash.log
+crash.*.log
+
+# Sensitive variable files
+*.tfvars
+*.tfvars.json
+
+# Keep provider lock files
+!.terraform.lock.hcl
+
+
+# Terraform working directories
+**/.terraform/**
+
+# Terraform state
+*.tfstate
+*.tfstate.*
+
+# Terraform plan files
+*.tfplan
+*.plan
+plan.txt
+
+# Variable files
+*.tfvars
+*.tfvars.json
+
+# Keep dependency lock files
+!.terraform.lock.hcl

@@ -1,0 +1,39 @@
+version: 0.2
+
+phases:
+
+  install:
+    commands:
+      - echo "Installing Terraform..."
+      - curl -fsSL -o terraform.zip https://releases.hashicorp.com/terraform/1.15.0/terraform_1.15.0_linux_amd64.zip
+      - unzip terraform.zip
+      - mv terraform /usr/local/bin/
+      - terraform version
+
+  pre_build:
+    commands:
+      - echo "Moving to Day 3 workload..."
+      - cd day3/workload
+
+      - echo "Initializing Terraform..."
+      - terraform init -input=false
+
+      - echo "Checking Terraform formatting..."
+      - terraform fmt -check
+
+      - echo "Validating Terraform..."
+      - terraform validate
+
+  build:
+    commands:
+      - echo "Creating Terraform plan..."
+      - terraform plan -input=false -out=tfplan
+
+  post_build:
+    commands:
+      - echo "Terraform plan completed successfully."
+
+artifacts:
+  files:
+    - 'day3/workload/**/*'
+    - 'day3/buildspec/buildspec-apply.yml'
