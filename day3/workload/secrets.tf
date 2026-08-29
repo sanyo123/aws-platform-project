@@ -3,11 +3,12 @@
 # ============================================================
 
 resource "aws_secretsmanager_secret" "app" {
+  provider = aws.development
+
   name                    = "day3/app/database"
   description             = "Day 3 application database credentials"
   recovery_window_in_days = 0
 
-  # Encrypt the secret using our customer-managed KMS key
   kms_key_id = aws_kms_key.day3.arn
 
   tags = {
@@ -32,6 +33,8 @@ resource "random_password" "db" {
 # ============================================================
 
 resource "aws_secretsmanager_secret_version" "app" {
+  provider = aws.development
+
   secret_id = aws_secretsmanager_secret.app.id
 
   secret_string = jsonencode({

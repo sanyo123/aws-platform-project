@@ -154,3 +154,4 @@ resource "aws_instance" "workload" {
     Name = "day3-workload"
   }
 }
+
