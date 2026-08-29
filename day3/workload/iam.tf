@@ -52,3 +52,5 @@ resource "aws_iam_instance_profile" "workload" {
   name = "Day3WorkloadInstanceProfile"
   role = aws_iam_role.workload.name
 }
+
+####
